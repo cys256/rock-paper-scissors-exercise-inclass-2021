@@ -5,7 +5,21 @@
 
 import random
 
-print("Rock, Paper, Scissors, Shoot!")
+import os
+
+import dotenv
+
+
+dotenv.load_dotenv()
+
+
+
+PLAYER_NAME = os.getenv("PLAYER_NAME")
+print (PLAYER_NAME)
+
+
+
+print("Welcome", PLAYER_NAME, "to Rock, Paper, Scissors, Shoot!")
 
 #print(10)
 #print(10, 99, "My message", "another message")
@@ -42,6 +56,37 @@ valid_options = ["rock", "paper", "scissors"]
 computer_choice = random.choice(valid_options)
 
 print("COMPUTER CHOPICE: ", computer_choice)
+
+
+# determine who won!
+
+# adapted from code shared by Reid in Slack
+
+#USER WINNING AND TIE SCENARIOS
+if user_choice == computer_choice:
+    print("It's a tie, try again!")
+
+elif (user_choice == "scissors") and (computer_choice == "paper"):
+    print("Scissors cuts paper, you win!")
+elif (user_choice == "rock") and (computer_choice == "scissors"):
+    print("rock smashes scissors, you win!")
+elif (user_choice == "paper") and (computer_choice == "rock"):
+    print("Paper covers rock, you win!")
+
+#COMPUTER WINNING SCENARIOS
+elif (user_choice == "scissors") and (computer_choice == "rock"):
+    print("rock smashes scissors, you lose!")
+elif (user_choice == "rock") and (computer_choice == "paper"):
+    print("paper covers rock, you lose!")
+elif (user_choice == "paper") and (computer_choice == "scissors"):
+    print("Scissors cuts paper, you lose!")
+
+
+
+# configure player name via environment variables
+
+
+
 
 
 print("THIS IS THE END OF OUR GAME. PLEASE PLAY AGAIN.")
